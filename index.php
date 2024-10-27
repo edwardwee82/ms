@@ -131,10 +131,10 @@ function getclause($sysid)
 		  
 		if($row["processName"]!=$processName)
 		{	
-			$processName=$row["systemID"]." - ".$row["processName"];
+			$processName=$row["processName"];
 			if($cnt>1)
 			{$x.="</table>\n";}
-			$x.="<h4>".$row["clauseName"]." ".$processName."</h4>\n";
+			$x.="<h4>".$row["systemID"]." - ".$row["clauseName"]." ".$processName."</h4>\n";
 			$x.="\n<table border=0>\n";
 			$cnt+=1;
 			
