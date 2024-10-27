@@ -40,7 +40,7 @@
 <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
 </head>
 <body>
-HAHAHA
+
 <h1><?php echo $title; ?></h1>
 
 <?php
