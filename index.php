@@ -117,7 +117,7 @@ function getclause($sysid)
 	
 	
 	
-	$sql = "SELECT * FROM `tClauses` WHERE `systemName` LIKE '%$sysid%' ORDER BY `systemName` ASC, `clauseID` ASC;";
+	$sql = "SELECT * FROM `tClauses` WHERE `systemName` LIKE '%$sysid%' ORDER BY `systemName` DESC, `clauseID` ASC;";
 	$result = $conn->query($sql);
 	if ($result->num_rows > 0) {
 	  // output data of each row
