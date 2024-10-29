@@ -29,7 +29,7 @@
 
 <?php
 	//header details
-	$title="Integrated Management System Enthusiast hahaha";
+	$title="Integrated Management System Enthusiast";
 	//echo $servername;
 	
 ?>
@@ -60,7 +60,7 @@
 
 function getSystems()
 {
-	include_once "conn.php";
+	include_once "./../../conn.php";
 	
 	// Create connection
 	$conn = new mysqli($servername, $username, $password, $dbname);
