@@ -1,5 +1,5 @@
 <?php
-	include_once "./.conn.php";
+	include "./../.conn.php";
 	//menu selections
 	$z="";
 	if(isset($_GET['sys']))
