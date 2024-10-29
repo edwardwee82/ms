@@ -40,7 +40,7 @@
 
 function getclause($sysid, $clause)
 {
-	include "./../.conn.php";
+	include "./.conn.php";
 	
 	// Create connection
 	$conn = new mysqli($servername, $username, $password, $dbname);
