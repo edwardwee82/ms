@@ -39,7 +39,7 @@
 
 <?php
 
-function getclause($sysid)
+function getclause($sysid, $clause)
 {
 	include_once "conn.php";
 	
@@ -54,7 +54,7 @@ function getclause($sysid)
 	
 	
 	
-	$sql = "SELECT * FROM `tClauses` WHERE `systemName` LIKE '%$sysid%' ORDER BY `systemName` DESC, `clauseID` ASC;";
+	$sql = "SELECT * FROM `tClauses` WHERE `systemName` LIKE '%$sysid%' AND `clauseName`='$clause' ORDER BY `systemName` DESC, `clauseID` ASC;";
 	$result = $conn->query($sql);
 	if ($result->num_rows > 0) {
 
@@ -63,8 +63,10 @@ function getclause($sysid)
 	  $processName="";
 		$cnt=1;
 	  while($row = $result->fetch_assoc()) {
-		
-		if($row["processName"]!=$processName)
+		$x.="{'System':'".$row["systemName"]."', 'ClauseName':'".$row["clauseName"]."', 'Clause Description': '".nl2br($row["clauseDescription"])."', 'Clause Details' :'".nl2br($row["clauseDetails"])."'}";
+
+
+		/* if($row["processName"]!=$processName)
 		{	
 			$processName=$row["processName"];
 			if($cnt>1)
@@ -124,7 +126,7 @@ function getclause($sysid)
 			$x.= "</tr>\n";
 			$cnt+=1;
 		}
-	  }
+ */	  }
 	  
 	} else {
 	  $x.= "0 results";
