@@ -6,8 +6,8 @@
 	{
 		$sys= $_GET['sys'];
 		$clause= $_GET['clause'];
-		echo "$sys $clause";
-		//$z=getclause($sys,$clause);
+		//echo "$sys $clause";
+		$z=getclause($sys,$clause);
 				
 	
 	}
