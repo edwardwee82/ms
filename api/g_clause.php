@@ -1,5 +1,5 @@
 <?php
-	include "./../.conn.php";
+	
 	//menu selections
 	$z="";
 	if(isset($_GET['sys']))
@@ -40,7 +40,7 @@
 
 function getclause($sysid, $clause)
 {
-	
+	include "./../.conn.php";
 	
 	// Create connection
 	$conn = new mysqli($servername, $username, $password, $dbname);
