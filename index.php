@@ -29,7 +29,7 @@
 
 <?php
 	//header details
-	$title="Integrated Management System Enthusiast";
+	$title="Integrated Management System Enthusiast hahaha";
 	//echo $servername;
 	
 ?>
