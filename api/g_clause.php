@@ -1,10 +1,13 @@
 <?php
+	include_once "./../.conn.php";
 	//menu selections
 	$z="";
 	if(isset($_GET['sys']))
 	{
 		$sys= $_GET['sys'];
-		$z=getclause($sys);
+		$clause= $_GET['clause'];
+		echo "$sys $clause";
+		//$z=getclause($sys,$clause);
 				
 	
 	}
@@ -32,16 +35,12 @@
 ?>
 
 
-</body>
-
-
-</html>
 
 <?php
 
 function getclause($sysid, $clause)
 {
-	include_once "conn.php";
+	
 	
 	// Create connection
 	$conn = new mysqli($servername, $username, $password, $dbname);
