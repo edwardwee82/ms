@@ -41,7 +41,8 @@
 function getclause($sysid, $clause)
 {
 	include "./../.conn.php";
-	
+	echo $username;
+	/*
 	// Create connection
 	$conn = new mysqli($servername, $username, $password, $dbname);
 	// Check connection
@@ -50,7 +51,7 @@ function getclause($sysid, $clause)
 	}
 	//$x ="Connected successfully <br>";
 	$x="";
-	
+	*/
 	
 	
 	$sql = "SELECT * FROM `tClauses` WHERE `systemName` LIKE '%$sysid%' AND `clauseName`='$clause' ORDER BY `systemName` DESC, `clauseID` ASC;";
