@@ -63,7 +63,7 @@ function getclause($sysid, $clause)
 	  $processName="";
 		$cnt=1;
 	  while($row = $result->fetch_assoc()) {
-		$x.="{'System':'".$row["systemName"]."', 'ClauseName':'".$row["clauseName"]."', 'Clause Description': '".nl2br($row["clauseDescription"])."', 'Clause Details' :'".nl2br($row["clauseDetails"])."'}";
+		$x.="{/"System/"":'".$row["systemName"]."', 'ClauseName':'".$row["clauseName"]."', 'Clause Description': '".nl2br($row["clauseDescription"])."', 'Clause Details' :'".nl2br($row["clauseDetails"])."'}";
 
 
 		/* if($row["processName"]!=$processName)
