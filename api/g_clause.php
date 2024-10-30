@@ -19,12 +19,6 @@
 	
 ?>
 
-<?php
-	//header details
-	$title="Integrated Management System Enthusiast";
-	//echo $servername;
-	
-?>
 
 
 <?php
