@@ -48,20 +48,34 @@ function getclause($sysid, $clause)
 	
 	
 	
-	$sql = "SELECT * FROM `tClauses` WHERE `systemName` LIKE '%$sysid%' AND `clauseName`='$clause' ORDER BY `systemName` DESC, `clauseID` ASC;";
+	$sql = "SELECT * FROM `tClauses` WHERE `systemName` LIKE '%$sysid%' AND `clauseName` LIKE '$clause%' ORDER BY `systemName` DESC, `clauseID` ASC;";
 	$result = $conn->query($sql);
 	if ($result->num_rows > 0) 
 	{
 
-
+	
 
 	  $processName="";
 		$cnt=1;
+		
+	
+	
 	  while($row = $result->fetch_assoc()) {
-		$x.='{"System":"'.$row["systemName"].'", "ClauseName":"'.$row["clauseName"].'", "Clause Description": "'.nl2br($row["clauseDescription"]).'", "Clause Details" :"'.nl2br($row["clauseDetails"]).'"}';
+		if($cnt>1)
+		{
+			$x.=' }';	
+		}
+		
+		if($cnt==1) 
+		{
+			$x.='{"System":"'.$row["systemName"];
+			$x.=' {';
+		}
+		$x.='"ClauseName":"'.$row["clauseName"].'", "Clause Description": "'.nl2br($row["clauseDescription"]).'", "Clause Details" :"'.nl2br($row["clauseDetails"]).'"}';
 
  	  }
-	  
+		$x.=' }';
+	
 	} else {
 	  $x.= "0 results";
 	}
