@@ -104,7 +104,7 @@ function getSystems()
 
 function getclause($sysid)
 {
-	include_once "conn.php";
+	include_once ".conn.php";
 	
 	// Create connection
 	$conn = new mysqli($servername, $username, $password, $dbname);
@@ -132,8 +132,7 @@ function getclause($sysid)
 		if($row["processName"]!=$processName)
 		{	
 			$processName=$row["processName"];
-			if($cnt>1)
-			{$x.="</table>\n";}
+			if($cnt>1) 			{$x.="</table>\n";}
 			$x.="<h4>".$row["systemName"]." - ".$row["clauseName"]." ".$processName."</h4>\n";
 			$x.="\n<table border=0>\n";
 			$cnt+=1;

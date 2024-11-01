@@ -2,7 +2,10 @@
 <head>
     <title>Update Clause Details</title>
     <script src="https://cdn.tiny.cloud/1/tjwm8rfvtvnbrk7m1slkwdirjauctg8cffuleg4oqw3y4324/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
-    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+    <!-- <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <?php 
 
@@ -23,15 +26,6 @@
 
     
     <body>
-        <script type="text/javascript">
-            tinymce.init({
-                selector: '#textarea',
-                plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
-                toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
-            });
-
-            
-        </script>
 
         <table width=100%>
             <tr>
@@ -99,7 +93,7 @@ function getoutput($conn)
     {
         $sys=$_GET['sys'];
         $clause=$_GET['clause'];
-        $x.="<h1>$sys $clause</h1>";
+        $x.="<h3>$sys $clause</h3>";
         $sql = "SELECT * FROM `tClauses` WHERE `systemName` LIKE '$sys' AND `clauseName` LIKE '$clause%' ORDER BY `systemName` DESC, `clauseID` ASC;";
         $result = $conn->query($sql);
 	    //echo $sql;
@@ -109,16 +103,28 @@ function getoutput($conn)
                 $clausedesc="";
                 $clausedet="";
                 $clausename=$row['clauseName'];
-                if(is_null($row['clauseDescription'])==false||$row['clauseDescription']!=="")
-                {
+                $isheader=true;
+                $cid=$row['clauseID'];
+               
+                
+                $clausedesc=$row['clauseDescription'];
                     
-                    $clausedesc="<textarea>".nl2br($row['clauseDescription'])."</textarea>";}
                 
                 if($row['clauseDetails']!=="")
                 {
+
+                    $tid="cdet".$cid;
                     
-                    $clausedet="<textarea>".nl2br($row['clauseDetails'])."</textarea>";}
-                $x.= "<h5> $clausename $clausedesc </h5>";
+                    $x.=tinyinit($tid);
+                    $cd=$row['clauseDetails'];
+                    $clausedet="<form id='frm$tid'>
+                                    <textarea id='$tid'>$cd</textarea>
+                                    <button type='button' onclick='submitcd(\"$tid\")'>Submit</button>
+                                </form>
+                                ";
+                }
+                $x.= "<h5> $clausename $clausedesc  </h5>";
+                
                 $x.= $clausedet;
 
             }
@@ -140,3 +146,48 @@ function getoutput($conn)
 
 </body>
 </html>
+
+<?php
+
+function tinyinit($id){
+
+$x="
+<script type=\"text/javascript\">
+tinymce.init({
+    selector: 'textarea#$id',
+    plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+    toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+});
+
+function submitcd(tid) {
+    var content = tinymce.get(tid).getContent();
+    $.ajax({
+      url: './api/upd_cd.php',
+      type: 'POST',
+      data: { content: content, tid: tid},
+      success: function(response) {
+        alert(tid+'Content saved successfully!');
+      },
+      error: function() {
+        alert('An error occurred.');
+      }
+    });
+  }
+</script>";
+
+return $x;
+}
+
+function cleanname($x)
+{
+    $x=str_replace(".","",$x);
+    return $x;
+
+}
+function br2nl($string)
+{
+    $breaks = array("<br />","<br>","<br/>");  
+    return str_ireplace($breaks, "\r\n", $string); 
+}
+
+?>
