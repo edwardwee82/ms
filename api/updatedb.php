@@ -2,13 +2,13 @@
     if (isset($_POST['content'])) {
         $content = $_POST['content'];
         // Save the content to a file or database
-        file_put_contents('content.txt', $content);
+        //file_put_contents('content.txt', $content);
         echo 'Content saved successfully!';
       } else {
         echo 'No content received.';
       }
 
-      
+
 
     if(isset($_POST['updatetype']))
     {
