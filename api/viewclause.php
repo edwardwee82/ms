@@ -38,7 +38,7 @@
                   }
                   $x.= "<h5> $clausename $clausedesc  </h5>";
                   $x.= $cd;
-                  
+                  $x.= "<br> <hr class='hr-blurry'>";
   
               }
               echo $x;
