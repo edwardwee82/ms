@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+<?php include 'inc.tools.php'; ?>
+
 <head>
     <title>Management System</title>
-    <script src="https://cdn.tiny.cloud/1/tjwm8rfvtvnbrk7m1slkwdirjauctg8cffuleg4oqw3y4324/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<?php
+		echo callHeader();
+	?>
 </head>
 <body>
 <?php
@@ -34,7 +35,36 @@ function getcontent()
 
 	$x="<h5>Content</h5>";
 	$x.="<a href='viewms.php'>View Clauses</a>";
+
+	
+
 	return $x;
+	
+
+}
+
+function test()
+{
+	//Use of textbox
+	$x="";
+	$tbid='tClauses135';
+	$ttype='tClauses';
+	$idcol='clauseID';
+	$id = 135;
+	$tbl='tClauses';
+	$col='ApplicabilityCriteria';
+	$content='<p>Top management <span style="color: #e03e2d;"><strong>shall </strong></span>review the organization&rsquo;s environmental management system, at planned intervals, to ensure its continuing suitability, adequacy and effectiveness.<br>The management review <span style="color: #e03e2d;"><strong>shall </strong></span>include consideration of:</p>
+	<p style="padding-left: 40px;">a) the status of actions from previous management reviews;<br>b) changes in:</p>
+	<p style="padding-left: 80px;">1) external and internal issues that are relevant to the environmental management system;<br>2) the needs and expectations of interested parties, including compliance obligations;<br>3) its significant environmental aspects;<br>4) risks and opportunities;</p>
+	<p style="padding-left: 40px;">c) the extent to which environmental objectives have been achieved;<br>d) information on the organization&rsquo;s environmental performance, including trends in:</p>
+	<p style="padding-left: 80px;">1) nonconformities and corrective actions;<br>2) monitoring and measurement results;<br>3) fulfilment of its compliance obligations;<br>4) audit results;</p>
+	<p style="padding-left: 40px;">e) adequacy of resources;<br>f) relevant communication(s) from interested parties, including complaints;<br>g) opportunities for continual improvement.</p>
+	<p>The outputs of the management review <span style="color: #e03e2d;"><strong>shall </strong></span>include:</p>
+	<p>&mdash; conclusions on the continuing suitability, adequacy and effectiveness of the environmental&nbsp;management system;<br>&mdash; decisions related to continual improvement opportunities;<br>&mdash; decisions related to any need for changes to the environmental management system, including&nbsp;resources;<br>&mdash; actions, if needed, when environmental objectives have not been achieved;<br>&mdash; opportunities to improve integration of the environmental management system with other business&nbsp;processes, if needed;<br>&mdash; any implications for the strategic direction of the organization.</p>
+	<p>The organization <span style="color: #e03e2d;"><strong>shall </strong></span>&nbsp;retain documented information as evidence of the results of management reviews.</p>';
+	$x.=jsTextbox($tbid, $ttype,$idcol,$id, $tbl, $content, $col);
+	//$tbid, $ttype,$idcol,$id, $tbl, $content, $col
+
 }
 
 ?>

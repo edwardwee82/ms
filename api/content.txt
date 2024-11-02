@@ -1,3 +1,1 @@
-23 UPDATE `tClauses` SET `clauseDetails`='<p>When the organization determines the need for changes to the quality management system, the changes <span style="color: #e03e2d;"><strong>shall </strong></span>be carried out in a planned manner (see 4.4).</p>
-<p>The organization&nbsp;<span style="color: #e03e2d;"><strong>shall </strong></span>consider:</p>
-<p style="padding-left: 40px;">a) the purpose of the changes and their potential consequences;<br>b) the integrity of the quality management system;<br>c) the availability of resources;<br>d) the allocation or reallocation of responsibilities and authorities.</p>' WHERE `clauseID`=23;
+UPDATE `tClauses` SET `ApplicabilityCriteria`='' WHERE `clauseID`=135;

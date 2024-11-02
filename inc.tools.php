@@ -13,23 +13,25 @@
     }
 
 
-    function jsTextbox($tbid, $ttype,$idcol,$id, $tbl)
+    function jsTextbox($tbid, $ttype,$idcol,$id, $tbl, $content, $col)
     {
 
             $x="
             <script type=\"text/javascript\">
             tinymce.init({
-                selector: 'textarea#$ttype$tbtid',
+                selector: 'textarea#$ttype$tbid',
                 plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
                 toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
             });
             
             function submitcd(tbid) {
-                var content = tinymce.get('$ttype'+tbid).getContent();
+                
+                var content = tinymce.get(tbid).getContent();
+                
                 $.ajax({
                   url: './api/upd_tb.php',
                   type: 'POST',
-                  data: { content: content, id: $id, idcol:'$idcol', type: '$ttype', tbl:'$tbl'},
+                  data: { content: content, id: $id, idcol:'$idcol', type: '$ttype', tbl:'$tbl', col:'$col'},
                   success: function(response) {
                     alert('Content saved successfully!');
                   },
@@ -39,7 +41,11 @@
                 });
               }
             </script>";
-            
+            $x.="<form id='frm$ttype$tbid'>            
+                    <textarea id='$ttype$tbid'>$content</textarea>
+                    <button type='button' onclick='submitcd(\"$ttype$tbid\")'>Submit</button>
+                </form>
+        ";
             return $x;
     }
     

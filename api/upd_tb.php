@@ -6,16 +6,18 @@
         $ttype=$_POST['ttype'];
         $tbl=$_POST['tbl'];
         $id=$_POST['id'];
-        $x=updatetb($tbl,$id,$idcol, $col, $content);
+        
         // Save the content to a file or database
-        //file_put_contents('content.txt', $id." ".$x);
+        //file_put_contents('content.txt', $tbl." ".$idcol." ".$id." ".$col." ".$content);
+        $x=updatetb($tbl, $id, $idcol, $col, $content);
+        file_put_contents('content.txt', $x);
         //echo '$tid Content saved successfully!';
       } else {
         //echo 'No content received.';
       }
 
 
-function updatetb($tbl,$id,$idcol, $col, $content)
+function updatetb($tbl, $id, $idcol, $col, $content)
 {
 
     include "./../.conn.php";
@@ -26,7 +28,7 @@ function updatetb($tbl,$id,$idcol, $col, $content)
       if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
       }
-      $sql="UPDATE `$tbl` SET `$col`='$content' WHERE `idcol`=$id;";
+      $sql="UPDATE `$tbl` SET `$col`='$content' WHERE `$idcol`=$id;";
       
       if ($res = $conn -> query($sql)) 
       {
