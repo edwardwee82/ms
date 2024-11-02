@@ -43,7 +43,7 @@
 
         <table width=100%>
             <tr>
-                <td valign=top><div id='menu'><?php echo $menu;  ?></div></td>
+                <td valign=top width=20%><div id='menu'><?php echo $menu;  ?></div></td>
                 <td valign=top><div id='content'></div></td>
             </tr>
         </table>

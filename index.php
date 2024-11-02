@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-    <title>Update Clause Details</title>
+    <title>Index</title>
     <script src="https://cdn.tiny.cloud/1/tjwm8rfvtvnbrk7m1slkwdirjauctg8cffuleg4oqw3y4324/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
     <!-- <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css"> -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -16,21 +16,21 @@
 
 <table width=100%>
 	<tr>
-		<td valign=top><?php echo $menu;  ?></td>
+		<td valign=top width=10%><?php echo $menu;  ?></td>
 		<td valign=top><?php echo $output; ?></td>
 	</tr>
 </table>
 </body>
 
 <?php
-getmenu()
+function getmenu()
 {
 	$x="<h5>Menu</h5>";
 	$x.="";
 	return $x;
 }
 
-getcontent()
+function getcontent()
 {
 
 	$x="<h5>Content</h5>";
