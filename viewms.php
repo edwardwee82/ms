@@ -13,27 +13,14 @@
 
     function submitcd(sys1, clause1) {
        
-        $.ajax({
-            url: './api/viewclause.php',
-            type: 'POST',
-            data: { sys: sys1, clause: clause1},
-            success: function(response) {
-                
-                //$('#content').load('./api/viewclause.php&sys='+sys+'&clause='+clause);
-                $(document).ready(function(){
-                    function loadContent() {
-                        
-                        //$("#content").load('./api/viewclause.php&sys='+sys+'&clause='+clause');
-                        $("#content").load('http://www.edwardwee.com');
-                        alert(sys1+' '+clause1+' Content loaded successfully!');
-                    }
-                loadContent(); // Initial load
-
-            },
-            error: function() {
-                alert('An error occurred.');
-            }
-        });
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("content").innerHTML = this.responseText;
+        }
+        };
+        xmlhttp.open("GET","./api/viewclause.php?sys="+sys1+"&clause="+clause1,true);
+        xmlhttp.send();
 
     }
     </script>
@@ -98,7 +85,7 @@ function setmenu($conn)
             $sys=$row["systemName"];
 
             $menulabel=$row["clauseName"].". ".$row["processName"];
-            $menu.="<a href='' onclick=\"submitcd('$sys','$clause')\">$menulabel</a>\n";
+            $menu.="<a onclick=\"submitcd('$sys','$clause')\">$menulabel</a>\n";
 
             $cnt+=1;
 

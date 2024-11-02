@@ -10,7 +10,7 @@
       {
           $sys=$_REQUEST['sys'];
           $clause=$_REQUEST['clause'];
-          $x.="<h3>$sys $clause</h3>";
+          $x.="<h3>$sys </h3>";
           $sql = "SELECT * FROM `tClauses` WHERE `systemName` LIKE '$sys' AND `clauseName` LIKE '$clause%' ORDER BY `systemName` DESC, `clauseID` ASC;";
           $result = $conn->query($sql);
           //echo $sql;
