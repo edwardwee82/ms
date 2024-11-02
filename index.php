@@ -16,7 +16,7 @@
 
 <table width=100%>
 	<tr>
-		<td valign=top width=10%><?php echo $menu;  ?></td>
+		<td valign=top width=20%><?php echo $menu;  ?></td>
 		<td valign=top><?php echo $output; ?></td>
 	</tr>
 </table>
