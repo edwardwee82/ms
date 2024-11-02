@@ -166,7 +166,7 @@ function submitcd(tid) {
       type: 'POST',
       data: { content: content, tid: tid},
       success: function(response) {
-        alert(tid+'Content saved successfully!');
+        alert('Content saved successfully!');
       },
       error: function() {
         alert('An error occurred.');
