@@ -6,10 +6,10 @@
         die("Connection failed: " . $conn->connect_error);
       }
       $x="";
-      if (isset($_POST['sys'])&&isset($_POST['clause']))
+      if (isset($_REQUEST['sys'])&&isset($_REQUEST['clause']))
       {
-          $sys=$_GET['sys'];
-          $clause=$_GET['clause'];
+          $sys=$_REQUEST['sys'];
+          $clause=$_REQUEST['clause'];
           $x.="<h3>$sys $clause</h3>";
           $sql = "SELECT * FROM `tClauses` WHERE `systemName` LIKE '$sys' AND `clauseName` LIKE '$clause%' ORDER BY `systemName` DESC, `clauseID` ASC;";
           $result = $conn->query($sql);
