@@ -1,1 +1,6 @@
-UPDATE `tClauses` SET `ApplicabilityCriteria`='' WHERE `clauseID`=135;
+UPDATE `tClauses` SET `docevidence`='<p>Records Managed for Risks &amp; Opportunities.</p>
+<ol>
+<li>SWOT Analysis</li>
+<li>What are the current business risks and opportunities (issues) internally and externally.&nbsp; In some companies, these are captured in a risk and opportunity register at the overall company level.&nbsp; eg: Competitor Risk, Climate change requirements affecting our manufacturing processes, statutory requirements that we could be non conforming due to certain processes</li>
+</ol>
+<p>How does the leadership of the organization or the management representative demonstrate this is available, and maintained (discussed, updated).&nbsp; Eg: through structured meetings specifically about business risks and opportunities.</p>' WHERE `clauseID`=2;

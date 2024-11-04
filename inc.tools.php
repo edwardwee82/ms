@@ -13,18 +13,29 @@
     }
 
 
-    function jsTextbox($tbid, $ttype,$idcol,$id, $tbl, $content, $col)
+    function jsTextbox($tbid, $ttype,$idcol,$id, $tbl, $content, $col, $height)
     {
 
             $x="
             <script type=\"text/javascript\">
             tinymce.init({
                 selector: 'textarea#$ttype$tbid',
-                plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
-                toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+                plugins: 'save anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount code',
+                menubar: false, 
+                toolbar: 'save undo redo blocks bold italic underline strikethrough | link image media table | numlist bullist code',
+                license_key: 'gpl',
+                height: $height, 
+                statusbar: false,
+                save_onsavecallback: function () {
+                   var content = tinymce.get('$ttype$tbid').getContent(); 
+                   //alert(\"Content saved: \" + content); // For demo purposes, use this or send it to your server 
+                   submitcd$tbid('$ttype$tbid');
+                   
+                  }
             });
+
             
-            function submitcd(tbid) {
+            function submitcd$tbid(tbid) {
                 
                 var content = tinymce.get(tbid).getContent();
                 
@@ -32,7 +43,7 @@
                   url: './api/upd_tb.php',
                   type: 'POST',
                   data: { content: content, id: $id, idcol:'$idcol', type: '$ttype', tbl:'$tbl', col:'$col'},
-                  success: function(response) {
+                    success: function(response) {
                     alert('Content saved successfully!');
                   },
                   error: function() {
@@ -40,12 +51,31 @@
                   }
                 });
               }
+            
             </script>";
             $x.="<form id='frm$ttype$tbid'>            
                     <textarea id='$ttype$tbid'>$content</textarea>
-                    <button type='button' onclick='submitcd(\"$ttype$tbid\")'>Submit</button>
-                </form>
-        ";
+                </form>        ";
+            return $x;
+    }
+    function jsChkboxbool($tbid, $idcol,$id, $tbl, $val, $col)
+    {
+//cant use
+            $x="
+            <script type=\"text/javascript\">
+            $(document).ready(function() {
+              $(\"#$tbid\").change(function() {
+                var val=$(\"tbid\").val()
+                  alert(val);
+                });
+            });
+
+           
+            </script>";
+            $x.="<select name=\"$tbid\" id=\"$tbid\" onchange=\"submitcb$tbid('$tbid')\">
+                <option value=\"Yes\">Yes</option>
+                <option value=\"No\" SELECTED>No</option>
+            </select>";
             return $x;
     }
     

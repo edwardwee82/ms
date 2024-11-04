@@ -85,7 +85,7 @@ function setmenu($conn)
 function getoutput($conn)
 {
     $x="";
-    
+    include('inc.tools.php');
     
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
@@ -109,24 +109,54 @@ function getoutput($conn)
                
                 
                 $clausedesc=$row['clauseDescription'];
-                    
+                $docevidence=$row['docevidence'];
+                $recevidence=$row['recevidence'];
                 
+                $x.= "<h5> $clausename $clausedesc  </h5>";
+                $tbl="tClauses";
+                $idcol="clauseID";
+                $id="$cid";
+
+
                 if($row['clauseDetails']!=="")
                 {
-
-                    $tid="cdet".$cid;
-                    
-                    $x.=tinyinit($tid);
+                    $tid="cdet".$cid;                 
                     $cd=$row['clauseDetails'];
-                    $clausedet="<form id='frm$tid'>
-                                    <textarea id='$tid'>$cd</textarea>
-                                    <button type='button' onclick='submitcd(\"$tid\")'>Submit</button>
-                                </form>
-                                ";
+                    $tbid="det_$tbl$id";
+                    $ttype="$tbid";
+                    $col="clauseDetails";
+                    $content="$cd";
+                    $tbheight=300;
+                    $x.= jsTextbox($tbid, $ttype,$idcol,$id, $tbl, $content, $col,$tbheight);
                 }
-                $x.= "<h5> $clausename $clausedesc  </h5>";
+                $tbheight=300;
                 
-                $x.= $clausedet;
+                
+
+                $tbid="doc_$tbl$id";
+                $ttype="$tbid";
+                $col="docevidence";
+                $content="$docevidence";
+                $val=$row['docreq'];
+                if($val==1)
+                {
+                    $x.="<b>Documents Required </b>";
+                    $x.= jsTextbox($tbid, $ttype,$idcol,$id, $tbl, $content, $col,$tbheight);
+                }
+
+                $tbid="rec_$tbl$id";
+                $ttype="$tbid";
+                $col="recevidence";
+                $content="$recevidence";
+                $val=$row['recreq'];
+                if($val==1)
+                {
+                    $x.="<b>Records Required </b>";
+                    $x.= jsTextbox($tbid, $ttype,$idcol,$id, $tbl, $content, $col,$tbheight);
+                }
+                
+                
+
 
             }
             return $x;
@@ -149,35 +179,6 @@ function getoutput($conn)
 </html>
 
 <?php
-
-function tinyinit($id){
-
-$x="
-<script type=\"text/javascript\">
-tinymce.init({
-    selector: 'textarea#$id',
-    plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
-    toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
-});
-
-function submitcd(tid) {
-    var content = tinymce.get(tid).getContent();
-    $.ajax({
-      url: './api/upd_cd.php',
-      type: 'POST',
-      data: { content: content, tid: tid},
-      success: function(response) {
-        alert('Content saved successfully!');
-      },
-      error: function() {
-        alert('An error occurred.');
-      }
-    });
-  }
-</script>";
-
-return $x;
-}
 
 function cleanname($x)
 {

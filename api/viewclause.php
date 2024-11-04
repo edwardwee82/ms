@@ -38,8 +38,21 @@
                   }
                   $x.= "<h5> $clausename $clausedesc  </h5>";
                   $x.= $cd;
+                  
+                  
+                  $val=$row['docreq'];
+                  if($val==1)
+                  {
+                      $x.="<p><b>Documents Required </b></p>";
+                      $x.= $row['docevidence'];
+                  }
+                  $val=$row['recreq'];
+                  if($val==1)
+                  {
+                      $x.="<p><b>Records Required </b></p>";
+                      $x.= $row['recevidence'];
+                  }
                   $x.= "<br> <hr class='hr-blurry'>";
-  
               }
               echo $x;
           }
