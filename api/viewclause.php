@@ -44,7 +44,7 @@
                   if($val==1)
                   {
                       
-                      $x.="<div class=\"bg-secondary text-white\">";
+                      $x.="<div class=\"bg-dark text-white\">";
                       $x.="<p><b>Documents Required </b></p>";
                       $x.= $row['docevidence'];
                       $x.="</div>";
@@ -53,7 +53,7 @@
                   if($val==1)
                   {
                       
-                      $x.="<div class=\"bg-secondary text-white\">";
+                      $x.="<div class=\"bg-dark text-white\">";
                       $x.="<p><b>Records Required </b></p>";
                       $x.= $row['recevidence'];
                       $x.="</div>";
