@@ -44,13 +44,17 @@
                   if($val==1)
                   {
                       $x.="<p><b>Documents Required </b></p>";
+                      $x.="<div class=\"bg-primary text-white\">";
                       $x.= $row['docevidence'];
+                      $x.="</div>";
                   }
                   $val=$row['recreq'];
                   if($val==1)
                   {
                       $x.="<p><b>Records Required </b></p>";
+                      $x.="<div class=\"bg-primary text-white\">";
                       $x.= $row['recevidence'];
+                      $x.="</div>";
                   }
                   $x.= "<br> <hr class='hr-blurry'>";
               }
