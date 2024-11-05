@@ -43,16 +43,18 @@
                   $val=$row['docreq'];
                   if($val==1)
                   {
-                      $x.="<p><b>Documents Required </b></p>";
+                      
                       $x.="<div class=\"bg-primary text-white\">";
+                      $x.="<p><b>Documents Required </b></p>";
                       $x.= $row['docevidence'];
                       $x.="</div>";
                   }
                   $val=$row['recreq'];
                   if($val==1)
                   {
-                      $x.="<p><b>Records Required </b></p>";
+                      
                       $x.="<div class=\"bg-primary text-white\">";
+                      $x.="<p><b>Records Required </b></p>";
                       $x.= $row['recevidence'];
                       $x.="</div>";
                   }
