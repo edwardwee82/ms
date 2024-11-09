@@ -1,6 +1,34 @@
-UPDATE `tClauses` SET `docevidence`='<p>Records Managed for Risks &amp; Opportunities.</p>
+UPDATE `tClauses` SET `docevidence`='<p>Demonstrate that the chemical manufacturing plant has a clear understanding of its internal and external environment</p>
 <ol>
-<li>SWOT Analysis</li>
-<li>What are the current business risks and opportunities (issues) internally and externally.&nbsp; In some companies, these are captured in a risk and opportunity register at the overall company level.&nbsp; eg: Competitor Risk, Climate change requirements affecting our manufacturing processes, statutory requirements that we could be non conforming due to certain processes</li>
-</ol>
-<p>How does the leadership of the organization or the management representative demonstrate this is available, and maintained (discussed, updated).&nbsp; Eg: through structured meetings specifically about business risks and opportunities.</p>' WHERE `clauseID`=2;
+<li>
+<p><strong>Documented Analysis of External and Internal Issues</strong>:</p>
+<ul>
+<li><strong>Context Analysis Document</strong>: Include records of analyses that identify relevant external factors (e.g., regulatory changes, market conditions, technological advancements) and internal factors (e.g., organizational culture, resource availability, safety standards) impacting the quality management system (QMS)​.</li>
+<li><strong>SWOT or PESTLE Analysis</strong>: Use tools like SWOT (Strengths, Weaknesses, Opportunities, Threats) or PESTLE (Political, Economic, Social, Technological, Legal, Environmental) to provide structured analysis on factors affecting the QMS​.</li>
+</ul>
+</li>
+<li>
+<p><strong>Strategic Objectives and Alignments</strong>:</p>
+<ul>
+<li><strong>Strategic Planning Documents</strong>: Evidence of alignment between the plant&rsquo;s QMS objectives and broader business goals, demonstrating how identified internal and external factors are integrated into strategic planning​.</li>
+</ul>
+</li>
+<li>
+<p><strong>Risk and Opportunity Assessment</strong>:</p>
+<ul>
+<li><strong>Risk Register or Risk Assessment Documentation</strong>: Documented risk assessments for critical processes, identifying potential risks related to context factors (e.g., supplier reliability, regulatory compliance) and opportunities for improvement in operations​.</li>
+</ul>
+</li>
+<li>
+<p><strong>Periodic Monitoring and Review</strong>:</p>
+<ul>
+<li><strong>Review Meeting Minutes</strong>: Records of regular management reviews or meetings that include discussions on changes in the external and internal environment and any required adjustments to the QMS​.</li>
+</ul>
+</li>
+<li>
+<p><strong>Stakeholder Needs and Expectations</strong>:</p>
+<ul>
+<li><strong>Stakeholder Analysis Documentation</strong>: Evidence that the needs and expectations of key stakeholders (such as customers, regulatory bodies, employees, suppliers) are identified and considered in the QMS​.</li>
+</ul>
+</li>
+</ol>' WHERE `clauseID`=2;

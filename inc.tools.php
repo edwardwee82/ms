@@ -22,15 +22,16 @@
                 selector: 'textarea#$ttype$tbid',
                 plugins: 'save anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount code',
                 menubar: false, 
-                toolbar: 'save undo redo blocks bold italic underline strikethrough | link image media table | numlist bullist code',
+                toolbar: 'save undo redo blocks bold italic underline strikethrough|numlist bullist indent code|link image media table ',
                 license_key: 'gpl',
                 height: $height, 
-                statusbar: false,
+                
                 save_onsavecallback: function () {
                    var content = tinymce.get('$ttype$tbid').getContent(); 
                    //alert(\"Content saved: \" + content); // For demo purposes, use this or send it to your server 
                    submitcd$tbid('$ttype$tbid');
                    
+                   this.notificationManager.open({ text: 'Content saved successfully!', type: 'success', timeout: 3000 });
                   }
             });
 
@@ -44,7 +45,7 @@
                   type: 'POST',
                   data: { content: content, id: $id, idcol:'$idcol', type: '$ttype', tbl:'$tbl', col:'$col'},
                     success: function(response) {
-                    alert('Content saved successfully!');
+                    //alert('Content saved successfully!');
                   },
                   error: function() {
                     alert('An error occurred.');

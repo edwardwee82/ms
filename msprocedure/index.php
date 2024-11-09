@@ -3,9 +3,12 @@
 	include './../inc.tools.php'; 
 	include "./../.conn.php";
 	$conn = new mysqli($servername, $username, $password, $dbname);
-			if ($conn->connect_error) {
+	if ($conn->connect_error) 
+    {
 		die("Connection failed: " . $conn->connect_error);
-		}
+	}
+        $menu="";
+        $output="";
 
 ?>
 
@@ -55,7 +58,7 @@ function getmenu($conn)
 
 }
 
-function getcontent()
+function getcontent($conn)
 {
 	$x="";
 	//$x.="Test";

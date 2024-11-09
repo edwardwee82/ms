@@ -125,11 +125,22 @@ function getoutput($conn)
                     $tbid="det_$tbl$id";
                     $ttype="$tbid";
                     $col="clauseDetails";
-                    $content="$cd";
+                    $content= "$cd";
                     $tbheight=300;
                     $x.= jsTextbox($tbid, $ttype,$idcol,$id, $tbl, $content, $col,$tbheight);
+                
+                    $tbid="doc_$tbl$id";
+                    $ttype="$tbid";
+                    $col="docevidence";
+                    $content="$docevidence";
+                    $val=$row['docreq'];
+                    
+                        $x.="<b>Documents Required </b>";
+                        $x.= jsTextbox($tbid, $ttype,$idcol,$id, $tbl, $content, $col,$tbheight);
+                    
+
+                
                 }
-                $tbheight=300;
                 
                 
 
@@ -140,8 +151,8 @@ function getoutput($conn)
                 $val=$row['docreq'];
                 if($val==1)
                 {
-                    $x.="<b>Documents Required </b>";
-                    $x.= jsTextbox($tbid, $ttype,$idcol,$id, $tbl, $content, $col,$tbheight);
+                    //$x.="<b>Documents Required </b>";
+                    //$x.= jsTextbox($tbid, $ttype,$idcol,$id, $tbl, $content, $col,$tbheight);
                 }
 
                 $tbid="rec_$tbl$id";
@@ -151,8 +162,8 @@ function getoutput($conn)
                 $val=$row['recreq'];
                 if($val==1)
                 {
-                    $x.="<b>Records Required </b>";
-                    $x.= jsTextbox($tbid, $ttype,$idcol,$id, $tbl, $content, $col,$tbheight);
+                    //$x.="<b>Records Required </b>";
+                    //$x.= jsTextbox($tbid, $ttype,$idcol,$id, $tbl, $content, $col,$tbheight);
                 }
                 
                 

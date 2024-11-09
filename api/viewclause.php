@@ -40,25 +40,17 @@
                   $x.= $cd;
                   
                   
-                  $val=$row['docreq'];
-                  if($val==1)
+                  if(is_null($row['docevidence'])==false&&$row['docevidence']!=='')
                   {
                       
-                      $x.="<div class=\"bg-dark text-white\">";
-                      $x.="<p><b>Documents Required </b></p>";
+                      $x.="<div class=\"border border-primary rounded-sm\">";
+                      $x.="<p><b>Preparation Hint </b></p>";
                       $x.= $row['docevidence'];
                       $x.="</div>";
+                      $x.= "<br> <hr class='hr-blurry'>";
                   }
-                  $val=$row['recreq'];
-                  if($val==1)
-                  {
-                      
-                      $x.="<div class=\"bg-dark text-white\">";
-                      $x.="<p><b>Records Required </b></p>";
-                      $x.= $row['recevidence'];
-                      $x.="</div>";
-                  }
-                  $x.= "<br> <hr class='hr-blurry'>";
+                 
+                  
               }
               echo $x;
           }
