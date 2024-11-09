@@ -12,7 +12,7 @@
         // Save the content to a file or database
         //file_put_contents('content.txt', $tbl." ".$idcol." ".$id." ".$col." ".$content);
         $x=updatetb($tbl, $id, $idcol, $col, $content);
-        file_put_contents('content.txt', $x);
+        //file_put_contents('content.txt', $x);
         //echo '$tid Content saved successfully!';
       } else {
         //echo 'No content received.';
