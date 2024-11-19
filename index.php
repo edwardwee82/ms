@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<?php include 'inc.tools.php'; ?>
+<?php 
+	include 'inc.tools.php';
+	include './api/login.php'; 
+?>
 
 <head>
     <title>Management System</title>
@@ -26,6 +29,7 @@
 function getmenu()
 {
 	$x="<h5>Menu</h5>";
+	$x.= loginfrm();
 	$x.="";
 	return $x;
 }
